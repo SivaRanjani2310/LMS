@@ -1,0 +1,23 @@
+[
+    {
+      "id": "REQ001",
+      "status": "Pending",
+      "requestedDate": "2025-04-14",
+      "requestedMessage": "Need help with assignment.",
+      "scheduledDate": "2025-04-18",
+      "scheduledTime": "10:00 AM",
+      "meetingLink": "https://meet.example.com/REQ001",
+      "adminMessage": "Meeting scheduled."
+    },
+    {
+      "id": "REQ002",
+      "status": "Approved",
+      "requestedDate": "2025-04-10",
+      "requestedMessage": "Clarification on project.",
+      "scheduledDate": "2025-04-15",
+      "scheduledTime": "02:30 PM",
+      "meetingLink": "https://meet.example.com/REQ002",
+      "adminMessage": "See you then!"
+    }
+  ]
+  

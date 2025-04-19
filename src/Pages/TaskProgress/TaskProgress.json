@@ -1,0 +1,66 @@
+[
+  {
+    "courseName": "Mathematics",
+    "students": [
+      {
+        "name": "John Doe",
+        "task": "Algebra Quiz",
+        "dueDate": "2025-04-25",
+        "completed": 3,
+        "total": 5
+      },
+      {
+        "name": "Jane Smith",
+        "task": "Geometry Worksheet",
+        "dueDate": "2025-04-28",
+        "completed": 5,
+        "total": 5
+      },
+      {
+        "name": "Michael Brown",
+        "task": "Trigonometry Assignment",
+        "dueDate": "2025-04-29",
+        "completed": 2,
+        "total": 4
+      }
+    ]
+  },
+  {
+    "courseName": "Science",
+    "students": [
+      {
+        "name": "Ali Khan",
+        "task": "Biology Notes",
+        "dueDate": "2025-04-22",
+        "completed": 2,
+        "total": 3
+      },
+      {
+        "name": "Priya Patel",
+        "task": "Chemistry Lab Report",
+        "dueDate": "2025-04-27",
+        "completed": 1,
+        "total": 2
+      }
+    ]
+  },
+  {
+    "courseName": "English",
+    "students": [
+      {
+        "name": "Carlos Reyes",
+        "task": "Essay Draft",
+        "dueDate": "2025-04-26",
+        "completed": 1,
+        "total": 1
+      },
+      {
+        "name": "Amina Yusuf",
+        "task": "Poetry Assignment",
+        "dueDate": "2025-04-30",
+        "completed": 0,
+        "total": 1
+      }
+    ]
+  }
+]

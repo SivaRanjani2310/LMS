@@ -1,0 +1,24 @@
+[
+    {
+      "title": "🎉 New Course: Advanced React",
+      "type": "New",
+      "description": "We've launched a new Advanced React course. Enroll now to deepen your skills!",
+      "postedBy": "Admin",
+      "date": "April 15, 2025"
+    },
+    {
+      "title": "⚠️ Scheduled Maintenance",
+      "type": "Alert",
+      "description": "The platform will undergo maintenance on April 20 from 2AM to 4AM.",
+      "postedBy": "System",
+      "date": "April 16, 2025"
+    },
+    {
+      "title": "📅 Live Webinar: Careers in Tech",
+      "type": "Event",
+      "description": "Join our upcoming webinar on April 25 to explore job paths in the tech industry.",
+      "postedBy": "Career Team",
+      "date": "April 14, 2025"
+    }
+  ]
+  

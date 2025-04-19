@@ -1,0 +1,21 @@
+[
+    {
+      "courseTitle": "Mathematics",
+      "totalMarks": 100,
+      "lessons": [
+        { "lessonId": 1, "lessonTitle": "Algebra", "lessonMarks": 25 },
+        { "lessonId": 2, "lessonTitle": "Geometry", "lessonMarks": 30 },
+        { "lessonId": 3, "lessonTitle": "Trigonometry", "lessonMarks": 45 }
+      ]
+    },
+    {
+      "courseTitle": "Science",
+      "totalMarks": 90,
+      "lessons": [
+        { "lessonId": 1, "lessonTitle": "Physics", "lessonMarks": 30 },
+        { "lessonId": 2, "lessonTitle": "Chemistry", "lessonMarks": 30 },
+        { "lessonId": 3, "lessonTitle": "Biology", "lessonMarks": 30 }
+      ]
+    }
+  ]
+  

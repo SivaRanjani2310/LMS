@@ -1,0 +1,35 @@
+{
+    "topics": [
+      {
+        "id": 1,
+        "title": "General Discussions",
+        "description": "For questions not tied to a specific course",
+        "postCount": 12
+      },
+      {
+        "id": 2,
+        "title": "Course Feedback",
+        "description": "Suggestions and feedback about courses",
+        "postCount": 8
+      },
+      {
+        "id": 3,
+        "title": "Doubts & Queries",
+        "description": "Ask your doubts to peers or instructors",
+        "postCount": 15
+      }
+    ],
+    "recentThreads": [
+      {
+        "title": "How to access the course certificate?",
+        "author": "Anjali",
+        "timeAgo": "2 hours ago"
+      },
+      {
+        "title": "Doubt in Chapter 3 of React Course",
+        "author": "Ravi",
+        "timeAgo": "1 day ago"
+      }
+    ]
+  }
+  
