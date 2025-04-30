@@ -1,0 +1,35 @@
+[
+    {
+      "userId": "1",
+      "name": "Alice",
+      "totalMarks": 95,
+      "percentage": 95,
+      "chapters": [
+        {
+          "courseName": "Mathematics",
+          "bestMarks": 95,
+          "attempts": [
+            {
+              "answers": [
+                {
+                  "question": "What is 2+2?",
+                  "userAnswer": "4",
+                  "correctAnswer": "4",
+                  "marks": 5,
+                  "maxMarks": 5
+                },
+                {
+                  "question": "What is 5*3?",
+                  "userAnswer": "15",
+                  "correctAnswer": "15",
+                  "marks": 5,
+                  "maxMarks": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

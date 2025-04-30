@@ -1,0 +1,6 @@
+{
+  "degrees": [
+    { "id": 1, "name": "B.Tech" },
+    { "id": 2, "name": "MBA" }
+  ]
+}

@@ -1,0 +1,49 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  overflow-x: scroll;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table thead tr{
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.table th, .table td {
+  text-align: center;
+  padding: 10px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table-dark {
+  background-color: #343a40;
+  color: white;
+}
+
+.admin-table{
+  height: 30em;
+  overflow: scroll;
+  /* overflow-y: scroll; */
+}
+
+.Admin-header{
+  padding: 1em;
+}

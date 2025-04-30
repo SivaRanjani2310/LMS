@@ -1,0 +1,12 @@
+{
+  "degrees": [
+    {
+      "_id": "deg1",
+      "title": "Course 1"
+    },
+    {
+      "_id": "deg2",
+      "title": "Course 2"
+    }
+  ]
+}

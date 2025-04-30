@@ -1,0 +1,78 @@
+/* AdminAnnouncement.css */
+
+.announcement-card {
+  background-color: #fff;
+  border-left: 4px solid #0d6efd;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.announcement-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.announcement-card h6 {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.announcement-card p {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+.announcement-card small {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.announcement-card .btn-danger {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+form input,
+form select,
+form textarea {
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+form button {
+  border-radius: 8px;
+  padding: 0.45rem 1.2rem;
+  font-weight: 500;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.badge.bg-info {
+  background-color: #17a2b8 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .announcement-card {
+    padding: 0.8rem;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    font-size: 0.9rem;
+  }
+
+  .announcement-card .btn-danger {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+}

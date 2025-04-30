@@ -1,0 +1,165 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.form-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.auth-form {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  position: absolute;
+  top: 0;
+}
+
+.login-form {
+  transform: translateX(0);
+}
+
+.signup-form {
+  transform: translateX(100%);
+}
+
+.form-container.signup-active .login-form {
+  transform: translateX(-100%);
+}
+
+.form-container.signup-active .signup-form {
+  transform: translateX(0);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.auth-form p {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #666;
+  font-size: 14px;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.google-icon {
+  font-weight: bold;
+  color: #4285F4;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+  margin: 0 10px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.password-input {
+  position: relative;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+}
+
+.forgot-link {
+  display: block;
+  text-align: right;
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.toggle-form {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+.toggle-form button {
+  background: none;
+  border: none;
+  color: #4285f4;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+} */

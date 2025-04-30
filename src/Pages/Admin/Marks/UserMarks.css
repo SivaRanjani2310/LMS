@@ -1,0 +1,45 @@
+.admin {
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+  background-color: var(--light);
+}
+.admin::-webkit-scrollbar {
+  display: none;
+}
+.adminData {
+  margin: 25px 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  
+  box-shadow: rgba(178, 181, 184, 0.2) 0px 8px 24px;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop.show {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+.table th, .table td {
+  text-align: center;
+  padding: 9px;
+}
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  width: 300%;
+  max-width: 800px;
+  padding: 20px;
+}

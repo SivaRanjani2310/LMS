@@ -1,0 +1,55 @@
+.zion-courses-wrapper{
+    min-height: 100dvh;
+    height: 100%;
+    width: 100%;
+    background-color: hsl(0, 0%, 92%);
+    padding: 1em;
+    gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+
+.zion-card{
+    display: block;
+    /* background-color: hsl(0, 0%, 50%); */
+}
+.zion-course-card{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    /* background:linear-gradient( var(--primary-color), var(--primary-light)); */
+    background-color: hsl(0, 0%, 95%) !important;
+    border: 1px solid hsl(0, 0%, 85%) !important;
+    border-radius: 1em;
+    /* width: 250px; */
+    transition: all .5s ease-in-out;
+}
+
+.zion-course-card:hover{
+    transform: scale(103%);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all .5s ease-in-out;
+   
+}
+.zion-course-card img{
+    max-width: 100%;
+    display: block;
+    border-radius: .5em;
+    height: 150px;
+    /* width: 150px; */
+    visibility: visible;
+}
+.zion-course-content{
+    padding:  1.5em 0 0 0;
+}
+.zion-course-title{
+    font-size: 1rem;
+}
+.zion-course-description{
+    font-size: .8rem;
+    margin-top: 2em;
+}
+.zion-btn,.Lock,.UnLock{
+    font-size: .8rem !important;
+}

@@ -21,13 +21,6 @@ const TaskReport = () => {
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    } else {
-      setCourses(coursesData);
-    }
-  }, [isAuthenticated, navigate]);
 
   return (
     <Navbar>

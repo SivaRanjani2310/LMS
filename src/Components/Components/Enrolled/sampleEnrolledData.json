@@ -1,0 +1,117 @@
+[
+    {
+        "id":"3It0TTf646DwWd9lYhuv",
+        "title":"B.Th & M.Div",
+        "thumbnail":null,
+        "videoUrl":"https://firebasestorage.googleapis.com/v0/b/zions-788b3.appspot.com/o/videos%2F102849dc-ffa7-479c-be8a-dcdaf67b206c_2024-08-17%2013-04-39.mkv?alt=media&token=614b32bf-0b4f-4817-8824-ca0ccf60d362",
+        "courses":[
+            {
+                "id":"123",
+                "title":"B.Th & M.Div I Semester",
+                "description":"testing description",
+                "thumbnail":"https://firebasestorage.googleapis.com/v0/b/zions-788b3.appspot.com/o/images%2F24a10cb5-efbb-4663-87a1-4c4e67ff09ff_Arduino-Tutorial-for-Interfacing-MAX30100-Pulse-Oximeter-Heart-Rate-Sensor%20(1).webp?alt=media&token=4660d904-ed37-4a79-8c18-b40f12164f2f",
+                "chapters":[
+                    {
+                        "id":"1",
+                        "title":"Paper - 1 || Theology - 1",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"இறையியல் -1",
+                                "type":"Audio",
+                                "link":"https://firebasestorage.googleapis.com/v0/b/zions-788b3.appspot.com/o/audios%2F9fb8999a-36ae-4574-85ea-d8dd9eeb490f_1.%E0%AE%87%E0%AE%B1%E0%AF%88%E0%AE%AF%E0%AE%BF%E0%AE%AF%E0%AE%B2%E0%AF%8D%20%E0%AE%AA%E0%AE%BE%E0%AE%95%E0%AE%AE%E0%AF%8D%201%20%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AE%AE%E0%AF%8D%201.mp3?alt=media&token=27899dbf-3601-439a-bf58-b15ccf794132"
+                            },
+                            {
+                                "id":"1",
+                                "title":"இறையியல் -1",
+                                "type":"pdf",
+                                "link":"/test.pdf"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"2",
+                        "title":"Paper -2 || Old Testament Survey",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"பழைய ஏற்பாடு ஆய்வு"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"3",
+                        "title":"Paper - 3 || New Testament Survey",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"புதிய ஏற்பாடு ஆய்வு"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"4",
+                        "title":"Paper - 4 || Bibliology",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"வேதாகமயியல்"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"5",
+                        "title":"Paper - 5 || Victorious Christian Living",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"வெற்றியுள்ள  கிறிஸ்தவ வாழ்வு"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"6",
+                        "title":"Paper - 6 || Introduction to Leadership",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"தலைமைத்துவம் அறிமுகம்"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"7",
+                        "title":"Paper - 7 || Spiritual Formation",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"ஆவிக்குரிய உருவாக்கம்"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"8.1",
+                        "title":"Paper - 8.1 || Training in Evangelism - Field work",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"சுவிசேஷ ஊழியப்பயிற்சி [களப்பணி]"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"8.2",
+                        "title":"Paper - 8.2 || Acts - Sermon Observation",
+                        "lessons":[
+                            {
+                                "id":"1",
+                                "title":"அப்போஸ்தலருடைய நடபடிகள் – பிரசங்கத்தை கூர்ந்து கவனித்தல்"
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        ]
+    }
+]

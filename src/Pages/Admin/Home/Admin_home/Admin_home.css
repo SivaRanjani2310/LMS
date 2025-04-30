@@ -1,0 +1,21 @@
+.admin-home{
+    padding: 1em;
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 100px;
+    gap: 1em;
+}
+
+.box1{
+    grid-row: span 2;
+}
+.box2{
+    grid-row: span 1;
+}
+.box3{
+    grid-row: span 4;
+    overflow-y: scroll;
+}
+.admin-header{
+    padding: 1em;
+}

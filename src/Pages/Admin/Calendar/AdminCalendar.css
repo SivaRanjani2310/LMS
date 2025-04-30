@@ -1,0 +1,94 @@
+/* Admin Calendar Styles */
+.react-Big-calendar {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-calendar {
+  height: 100%;
+}
+
+.rbc-calendar {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rbc-header {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  font-weight: 500;
+}
+
+.rbc-today {
+  background-color: #f8f9fa;
+}
+
+.rbc-event {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rbc-event:hover {
+  opacity: 0.9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.attendees-badge {
+  margin-top: 4px;
+}
+
+/* Modal Styles */
+.custom-modal-dialog {
+  max-width: 800px;
+}
+
+/* Filter Dropdown */
+.filter-dropdown .dropdown-menu {
+  padding: 10px;
+  min-width: 200px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .Dash_calender {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .Dash_calender > div {
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .rbc-calendar {
+    height: 400px !important;
+  }
+}
+
+/* Status Badges */
+.event-status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.status-scheduled {
+  background-color: #007bff;
+  color: white;
+}
+
+.status-completed {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-cancelled {
+  background-color: #6c757d;
+  color: white;
+}

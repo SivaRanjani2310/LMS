@@ -26,13 +26,6 @@ const Query = () => {
   const [queries, setQueries] = useState([]);
   const [showSlotForm, setShowSlotForm] = useState(false); // <- New state
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    } else {
-      setQueries(queriesData);
-    }
-  }, [isAuthenticated, navigate]);
 
   return (
     <Navbar>

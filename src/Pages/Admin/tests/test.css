@@ -1,0 +1,100 @@
+.user-page {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.users-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.h2-user-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.users-header-actions-cnt {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-user-cnt {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.3rem 0.8rem;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.search-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+/* Table Header */
+.users-details-header {
+    display: flex;
+    background: #007bff;
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Test Row */
+.test-details-cnt {
+    display: flex;
+    background: #fff;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.test-details-cnt:hover {
+    background: #f1f1f1;
+}
+
+.test-cell-cnt {
+    width: 20%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.more-icon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.more-icon:hover {
+    opacity: 1;
+}
+
+.no-tests-text {
+    padding: 1.5rem;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}

@@ -1,0 +1,181 @@
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authLogout } from "../../Redux/auth/action";
+import Menu from "../Menu/Menu";
+import { Dropdown } from "antd";
+
+// Image imports
+import user from "../../Assets/useravatar.png";
+import logo from "../../Assets/logo.png";
+
+// Icon imports
+import { BiLogOut, BiUserVoice } from "react-icons/bi";
+import { TbLayoutGridAdd, TbUsers, TbBrandSpeedtest, TbReport } from "react-icons/tb";
+import { LuLayoutGrid } from "react-icons/lu";
+import { PiStudentDuotone } from "react-icons/pi";
+import { HiOutlineHome } from "react-icons/hi";
+import { GoChevronDown } from "react-icons/go";
+import { RiAdminLine } from "react-icons/ri";
+import { AiOutlineQuestion } from "react-icons/ai";
+
+import { FaGraduationCap } from "react-icons/fa";
+import { MdEvent } from "react-icons/md";
+import { TbLogout2 } from "react-icons/tb";
+import { PiExamFill } from "react-icons/pi";
+import { BiUserCheck } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
+
+// CSS
+import "./Navbar.css";
+
+const AdminNavbar = ({ children }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const auth = useSelector((store) => store.auth);
+
+  // useEffect(() => {
+  //   if (!auth?.data?.isAuthenticated) {
+  //     navigate("/");
+  //   }
+  // }, [auth?.data?.isAuthenticated, navigate]);
+
+  // Safe destructuring
+  const user = auth?.data?.user || {};
+  const { userType = "", name = "User", premium = "false" } = user;
+
+  const [toggle, setToggle] = useState(true);
+
+  const studentData = [
+    { icon: <HiOutlineHome />, title: "Dashboard", address: "/admin" },
+    { icon: <FaGraduationCap />, title: "MyTask", address: "/admin/adminTask" },
+    { icon: <MdEvent />, title: "Calendar", address: "/admin/adminCalendar" },
+    { icon: <MdEvent />, title: "Events", address: "/eventsList" },
+    { icon: <PiExamFill />, title: "Tests", address: "/testsList" },
+    { icon: <BiUser />, title: "UserMarks", address: "/usermarks" },
+    { icon: <HiOutlineHome />, title: "TaskProgress", address: "/admin/adminTaskProgress" },
+    { icon: <HiOutlineHome />, title: "Forum", address: "/admin/adminForum" },
+    { icon: <HiOutlineHome />, title: "Query", address: "/admin/adminQuery" },
+    { icon: <HiOutlineHome />, title: "Announcement", address: "/admin/adminAnnouncement" },
+    { icon: <HiOutlineHome />, title: "Achievements", address: "/admin/adminAchievements" },
+
+      ];
+
+  const adminData = [
+    { icon: <HiOutlineHome />, title: "Dashboard", address: "/admin" },
+    // { icon: <HiOutlineHome />, title: "Announcement", address: "/announcement" },
+    { icon: <FaGraduationCap />, title: "Degrees", address: "/degrees" },
+    // { icon: <HiOutlineHome />, title: "Calendar", address: "/calendar" },
+    // { icon: <HiOutlineHome />, title: "TaskProgress", address: "/taskprogress" },
+    { icon: <MdEvent />, title: "Events", address: "/events" },
+    { icon: <PiExamFill />, title: "Test", address: "/test" },
+    { icon: <BiUserCheck />, title: "Usermarks", address: "/usermarks" },
+    { icon: <TbLogout2 />, title: "Logout", address: "/logout" },
+  ];
+
+  const tutorData = [
+    { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
+    { icon: <TbBrandSpeedtest />, title: "My Tasks", address: "/myTask" },
+    { icon: <TbLayoutGridAdd />, title: "Calendar", address: "/calendar" },
+    { icon: <TbReport />, title: "Reports", address: "/reports" },
+    { icon: <PiStudentDuotone />, title: "Forum", address: "/forum" },
+    { icon: <AiOutlineQuestion />, title: "Queries", address: "/query" },
+  ];
+
+  const handleLogout = () => {
+    dispatch(authLogout());
+  };
+
+  const dropdownItems = [
+    {
+      key: "1",
+      label: <span onClick={handleLogout}>Logout</span>,
+    },
+  ];
+
+  return (
+    <>
+      {/* Sidebar */}
+      <div id="sidebar" className={toggle ? "hide" : ""}>
+        <Link to="/" className="logo">
+          <div className="logoBox">
+            <img src={logo} alt="logo" />
+            <LuLayoutGrid
+              className="menuIconHidden"
+              onClick={() => setToggle(!toggle)}
+            />
+          </div>
+        </Link>
+
+        <ul className="side-menu top">
+       
+          {userType === "" &&
+            studentData.map((data, i) => (
+              <Menu
+                Icon={data.icon}
+                Title={data.title}
+                key={i}
+                Address={data.address}
+              />
+            ))}
+          {userType === "Admin" &&
+            adminData.map((data, i) => (
+              <Menu
+                Icon={data.icon}
+                Title={data.title}
+                key={i}
+                Address={data.address}
+              />
+            ))}
+
+          {/* Logout at the bottom */}
+          <span onClick={handleLogout}>
+            <Menu Icon={<BiLogOut />} Title="Logout" Address="" />
+          </span>
+        </ul>
+      </div>
+
+      {/* Main Content */}
+      <div id="content">
+        <nav>
+          <div>
+            <LuLayoutGrid className="menuIcon" onClick={() => setToggle(!toggle)} />
+
+            {userType === "Student" ? (
+              premium === "false" ? (
+                <Link to="/" className="nav-link">
+                  🔥 Access all features with premium! <span>Buy now!</span>
+                </Link>
+              ) : (
+                <span className="nav-link">🔥 You are a premium member!</span>
+              )
+            ) : (
+              <span className="nav-link">🔥 Welcome to LMS!</span>
+            )}
+          </div>
+
+          <div>
+            <Dropdown menu={{ items: dropdownItems }} placement="bottomLeft" arrow>
+              <div className="profile">
+                <img src={user} alt="User" />
+                <div>
+                  <p>{name}</p>
+                  <p>
+                    {userType} <GoChevronDown />
+                  </p>
+                </div>
+              </div>
+            </Dropdown>
+          </div>
+        </nav>
+
+        {/* Render children */}
+        {children}
+      </div>
+    </>
+  );
+};
+
+export default AdminNavbar;

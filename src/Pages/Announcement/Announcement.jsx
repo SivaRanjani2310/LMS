@@ -21,11 +21,7 @@ const Announcement = () => {
 
   const [announcements, setAnnouncements] = useState([]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
+
 
   useEffect(() => {
     setAnnouncements(announcementData); // ✅ Set from imported data

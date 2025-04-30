@@ -1,0 +1,108 @@
+/* Marks.css */
+
+.container-fluid {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.text-center {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.table {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead th {
+  text-align: center;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.btn-outline-primary {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  border-bottom: 2px solid #007bff;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.table-dark {
+  background-color: #343a40;
+  color: white;
+}
+
+.table-info {
+  background-color: #d1ecf1;
+}
+
+.table-warning {
+  background-color: #fff3cd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 10px;
+  }
+  
+  .table {
+    font-size: 14px;
+  }
+  
+  .btn-outline-primary {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
+  
+  .btn-danger {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+  
+  .modal-dialog {
+    width: 90%;
+  }
+}

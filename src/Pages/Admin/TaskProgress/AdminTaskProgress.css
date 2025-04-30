@@ -1,0 +1,262 @@
+/* AdminTaskProgress.css */
+
+.admin-task-progress-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 60px);
+}
+
+.admin-control-panel {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.course-selection h4 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.course-meta {
+  font-size: 0.9rem;
+}
+
+.search-box {
+  margin-top: 15px;
+}
+
+.progress-summary-cards {
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+}
+
+.summary-card .card-body {
+  padding: 15px;
+}
+
+.summary-card .card-title {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.summary-card .card-text {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.total-students {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.completed {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.on-track {
+  background-color: #d1ecf1;
+  border: 1px solid #bee5eb;
+}
+
+.behind {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.student-progress-table {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.student-row {
+  cursor: pointer;
+}
+
+.student-row:hover {
+  background-color: #f8f9fa;
+}
+
+.progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.task-overview {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.task-overview span {
+  font-size: 0.85rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.completed-tasks {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.upcoming-tasks {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.overdue-tasks {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.task-details-row {
+  background-color: #f8f9fa;
+}
+
+.task-details-container {
+  padding: 15px;
+}
+
+.task-details-container h6 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-item {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+}
+
+.task-item.completed {
+  background-color: #f8f9fa;
+  border-left: 4px solid #28a745;
+}
+
+.task-main-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.task-name {
+  font-weight: 500;
+}
+
+.grade-badge {
+  margin-left: 10px;
+  font-size: 0.8rem;
+  background-color: #e2e3e5;
+  color: #383d41;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.due-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.due-date.overdue {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.completed-date {
+  font-size: 0.8rem;
+  color: #28a745;
+  margin-left: 5px;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.grade-select {
+  width: 120px;
+}
+
+.mark-complete {
+  white-space: nowrap;
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .progress-summary-cards .col-md-3 {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-control-panel {
+    padding: 15px;
+  }
+  
+  .task-main-info {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .task-actions {
+    flex-direction: column;
+  }
+  
+  .grade-select {
+    width: 100%;
+  }
+  
+  .mark-complete {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}

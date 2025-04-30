@@ -1,0 +1,66 @@
+.client-table{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    width: 100%;
+    border: .01em solid rgb(196, 191, 191);
+    padding: 1em;
+    border-radius: 1em;
+}
+
+
+.table, th, td {
+    border: 1px solid rgb(196, 191, 191);
+    padding: 8px;
+    color: black;
+}
+.table-bottom {
+    border: 1px solid;
+    color: gainsboro;
+    padding: 5px;
+}
+
+.progress1 {
+
+    width: 100px;
+    color: skyblue;
+    border: none;
+    background-color: rgb(231, 245, 254);
+    border-radius: 50px;
+
+
+}
+
+.complete {
+    width: 100px;
+    color: skyblue;
+    background: rgb(231, 245, 254) ;
+    border-radius: 50px;
+    border: none;
+
+}
+
+.lock {
+    width: 100px;
+    color: skyblue;
+    background: rgb(231, 245, 254);
+    border-radius: 50px;
+    border: none;
+}
+
+.lock1 {
+
+    width: 100px;
+    color: green;
+    background: rgb(234,242,215);
+    border-radius: 50px;
+    border: none;
+}
+
+.percentage {
+    width: 100px;
+    border: none;
+    background: gray;
+    border-radius: 3px;
+
+}

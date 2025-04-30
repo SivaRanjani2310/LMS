@@ -103,11 +103,7 @@ const Student = () => {
     dispatch(getStudentData(filterStudent));
   }, [filterStudent]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      return navigate("/");
-    }
-  }, []);
+
 
   return (
     <Navbar>

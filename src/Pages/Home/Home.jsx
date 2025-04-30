@@ -84,11 +84,7 @@ const Home = () => {
     dispatch(getDashboardData());
   }, []);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      return navigate("/");
-    }
-  }, []);
+
 
   const timelineData = [
     { date: "2025-04-01", viewers: 10 },

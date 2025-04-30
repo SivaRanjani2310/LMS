@@ -1,0 +1,64 @@
+{
+    "_id": "65f123abc567890def456789",
+    "userId": "65b1234abcd567890ef12345",
+    "degreeId": "65c6789abcd0123456ef7890",
+    "totalMarks": 80,
+    "totalPossibleMarks": 100,
+    "percentage": 80.0,
+    "courses": [ ],
+    "chapters": [{
+        "courseId": "65d1357eabcd912345678901",
+        "maxMarks": 100,
+        "bestMarks": 80,
+        "attempts": [
+          {
+            "marksObtained": 80,
+            "answers": [
+              {
+                "question": "What is theology?",
+                "userAnswer": "Study of God",
+                "correctAnswer": "Study of God",
+                "type": "MCQ",
+                "marks": 10
+              },
+              {
+                "question": "Explain salvation.",
+                "userAnswer": "Uploaded file",
+                "type": "QuestionAnswer",
+                "fileUrl": "https://example.com/uploaded_file.pdf",
+                "marks": 70
+              }
+            ]
+          }
+        ]
+      }],
+    "lessons": [],
+    "subLessons": [{
+        "courseId": "65d1357eabcd912345678901",
+        "maxMarks": 100,
+        "bestMarks": 80,
+        "attempts": [
+          {
+            "marksObtained": 80,
+            "answers": [
+              {
+                "question": "What is theology?",
+                "userAnswer": "Study of God",
+                "correctAnswer": "Study of God",
+                "type": "MCQ",
+                "marks": 10
+              },
+              {
+                "question": "Explain salvation.",
+                "userAnswer": "Uploaded file",
+                "type": "QuestionAnswer",
+                "fileUrl": "https://example.com/uploaded_file.pdf",
+                "marks": 70
+              }
+            ]
+          }
+        ]
+      }],
+    "createdAt": "2025-02-01T10:00:00.000Z",
+    "updatedAt": "2025-02-01T10:30:00.000Z"
+  }

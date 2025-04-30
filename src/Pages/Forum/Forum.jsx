@@ -21,12 +21,6 @@ const Forum = () => {
 
   const [forumData, setForumData] = useState({ topics: [], recentThreads: [] });
 
-  // Redirect if not authenticated
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
 
   // Load static forum data
   useEffect(() => {
@@ -40,7 +34,7 @@ const Forum = () => {
       </div>
 
       <div className="leaderboardData px-4">
-        <div className="container mt-4 forum-container">
+        <div className="forum-container">
           {/* Search and New Post */}
           <div className="d-flex justify-content-between align-items-center mb-4">
             <input

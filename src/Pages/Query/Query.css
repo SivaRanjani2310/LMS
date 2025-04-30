@@ -89,12 +89,12 @@ textarea.input {
 }
 
 .cancel-button {
-  background: #dc3545;
+  background-color: #dc3545 !important;
   color: #fff;
 }
 
 .cancel-button:hover {
-  background: #b02a37;
+  background-color: #b02a37 !important;
 }
 
 .submit-button {

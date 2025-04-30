@@ -1,0 +1,17 @@
+[
+    {
+      "_id": "1",
+      "title": "Orientation Day",
+      "description": "Welcome event for new students",
+      "startDate": "2025-05-01T00:00:00.000Z",
+      "endDate": "2025-05-01T00:00:00.000Z"
+    },
+    {
+      "_id": "2",
+      "title": "Mid-Term Exams",
+      "description": "Mid-term examination period",
+      "startDate": "2025-06-15T00:00:00.000Z",
+      "endDate": "2025-06-30T00:00:00.000Z"
+    }
+  ]
+  
