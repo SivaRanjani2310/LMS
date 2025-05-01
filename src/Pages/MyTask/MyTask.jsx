@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentData } from "../../Redux/student/action";
+import axios from "axios";
 
 import Navbar from "../../Components/Sidebar/Navbar";
 import Header from "../../Components/Header/Header";
@@ -9,40 +10,92 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./MyTask.css";
 
 const MyTask = () => {
-  // Sample data
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Complete Project Documentation",
-      description: "Prepare the final project documentation in PDF format",
-      file: "project_docs.pdf",
-      assignedBy: "Admin",
-      dateAssigned: "2023-05-15",
-    },
-    {
-      id: 2,
-      title: "Review API Design",
-      description: "Review the API design document and provide feedback",
-      file: "api_design.pdf",
-      assignedBy: "Admin",
-      dateAssigned: "2023-05-10",
-    },
-  ]);
-
-  const [submissions, setSubmissions] = useState([
-    {
-      id: 1,
-      taskId: 2,
-      link: "https://docs.google.com/document/d/456",
-      status: "approved", // pending, approved, rejected
-      dateSubmitted: "2023-05-12",
-    },
-  ]);
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const [tasks, setTasks] = useState([]);
+  const [submissions, setSubmissions] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [newSubmission, setNewSubmission] = useState({
     taskId: "",
     link: "",
   });
+
+  // Get token from localStorage
+  const getToken = () => {
+    const loginData = JSON.parse(localStorage.getItem("loginData"));
+    return loginData?.token || null;
+  };
+
+  const token = getToken();
+  const navigate = useNavigate();
+
+  // Fetch all tasks
+  const fetchTasks = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${baseUrl}/api/tasks/`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setTasks(response.data);
+      
+      // Extract submissions from tasks
+      const taskSubmissions = response.data
+        .filter(task => task.mySubmission)
+        .map(task => ({
+          id: task._id,
+          taskId: task._id,
+          link: task.mySubmission.driveLink || task.mySubmission.file,
+          status: task.mySubmission.status,
+          dateSubmitted: task.mySubmission.submittedAt,
+        }));
+      
+      setSubmissions(taskSubmissions);
+      setError(null);
+    } catch (err) {
+      setError(err.response?.data?.message || err.message || "Failed to fetch tasks");
+      if (err.response?.status === 401) {
+        // Handle unauthorized (token expired/invalid)
+        localStorage.removeItem("loginData");
+        navigate("/login");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch all users
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/api/users/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUsers(response.data);
+    } catch (err) {
+      console.error("Failed to fetch users:", err);
+    }
+  };
+
+  // Fetch data on component mount
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    
+    const fetchData = async () => {
+      await fetchTasks();
+      await fetchUsers();
+    };
+    
+    fetchData();
+  }, [token, navigate]);
 
   // Get progress information
   const getProgressInfo = (taskId) => {
@@ -62,18 +115,39 @@ const MyTask = () => {
   };
 
   // Handle submission
-  const handleSubmitTask = (e) => {
+  const handleSubmitTask = async (e) => {
     e.preventDefault();
-    const newSubmissionObj = {
-      id: submissions.length + 1,
-      taskId: parseInt(newSubmission.taskId),
-      link: newSubmission.link,
-      status: "pending",
-      dateSubmitted: new Date().toISOString().split("T")[0],
-    };
+    try {
+      const taskId = newSubmission.taskId;
+      const response = await axios.post(
+        `${baseUrl}/api/tasks/${taskId}/submit`,
+        {
+          driveLink: newSubmission.link,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    setSubmissions([...submissions, newSubmissionObj]);
-    setNewSubmission({ taskId: "", link: "" });
+      // Update local state with the new submission
+      const newSubmissionObj = {
+        id: response.data._id,
+        taskId: taskId,
+        link: newSubmission.link,
+        status: "pending",
+        dateSubmitted: new Date().toISOString(),
+      };
+
+      setSubmissions([...submissions, newSubmissionObj]);
+      setNewSubmission({ taskId: "", link: "" });
+      
+      // Refresh tasks
+      await fetchTasks();
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to submit task");
+    }
   };
 
   // Check if task has submission
@@ -87,16 +161,13 @@ const MyTask = () => {
     return submission ? submission.status : null;
   };
 
-  const navigate = useNavigate();
+  if (loading) {
+    return <div className="loading-container">Loading tasks...</div>;
+  }
 
-  // Redux state
-  const {
-    data: { isAuthenticated },
-  } = useSelector((store) => store.auth);
-  const { students } = useSelector((store) => store.student);
-
-
-
+  if (error) {
+    return <div className="error-container">Error: {error}</div>;
+  }
 
   return (
     <Navbar>
@@ -114,7 +185,7 @@ const MyTask = () => {
               <div className="form-header">
                 <h2 className="form-title">
                   Submit Task:{" "}
-                  {tasks.find((t) => t.id === parseInt(newSubmission.taskId))?.title}
+                  {tasks.find((t) => t._id === newSubmission.taskId)?.title}
                 </h2>
                 <button
                   onClick={() => setNewSubmission({ taskId: "", link: "" })}
@@ -173,9 +244,7 @@ const MyTask = () => {
 
           {/* Tasks Section */}
           <div className="tasks-section">
-            <div className="section-header">
-              <h2 className="section-title">Your Tasks</h2>
-            </div>
+           
             <div className="tasks-list">
               {tasks.length === 0 ? (
                 <div className="empty-state">
@@ -183,22 +252,27 @@ const MyTask = () => {
                 </div>
               ) : (
                 tasks.map((task) => {
-                  const progress = getProgressInfo(task.id);
-                  const status = getSubmissionStatus(task.id);
+                  const progress = getProgressInfo(task._id);
+                  const status = getSubmissionStatus(task._id);
 
                   return (
-                    <div key={task.id} className="task-item">
+                    <div key={task._id} className="task-item">
                       <div className="task-header">
                         <div className="task-info">
                           <h3 className="task-title">
                             {task.title}
                           </h3>
                           <p className="task-meta">
-                            Assigned by {task.assignedBy} on {task.dateAssigned}
+                            Due date: {new Date(task.dueDate).toLocaleDateString()}
                           </p>
                           <p className="task-description">
                             {task.description}
                           </p>
+                          {task.maxMarks && (
+                            <p className="task-meta">
+                              Max marks: {task.maxMarks}
+                            </p>
+                          )}
                         </div>
                         {status && (
                           <span
@@ -232,33 +306,35 @@ const MyTask = () => {
 
                       {/* Action Buttons */}
                       <div className="task-actions">
-                        <a
-                          href={task.file}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="download-button"
-                        >
-                          <svg
-                            className="download-icon"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                        {task.file && (
+                          <a
+                            href={task.file}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="download-button"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                            />
-                          </svg>
-                          Download
-                        </a>
+                            <svg
+                              className="download-icon"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                              />
+                            </svg>
+                            Download
+                          </a>
+                        )}
                         {!status ? (
                           <button
                             onClick={() =>
                               setNewSubmission({
                                 ...newSubmission,
-                                taskId: task.id.toString(),
+                                taskId: task._id,
                               })
                             }
                             className="submit-task-button"
@@ -281,8 +357,6 @@ const MyTask = () => {
           </div>
         </div>
       </div>
-
-
     </Navbar>
   );
 };

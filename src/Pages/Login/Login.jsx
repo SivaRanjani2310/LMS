@@ -56,7 +56,7 @@ export default function Login() {
         navigate("/admin");
         window.location.reload();
       } else if (res.user.role === "Student") {
-        navigate("/student");
+        navigate("/home");
         window.location.reload();
       }
     } catch (error) {

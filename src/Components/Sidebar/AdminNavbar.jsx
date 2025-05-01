@@ -84,8 +84,9 @@ const AdminNavbar = ({ children }) => {
     { icon: <AiOutlineQuestion />, title: "Queries", address: "/query" },
   ];
 
+
   const handleLogout = () => {
-    dispatch(authLogout());
+    navigate("/"); // Navigates to homepage
   };
 
   const dropdownItems = [

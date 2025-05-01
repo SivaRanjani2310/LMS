@@ -29,7 +29,6 @@ import "./Navbar.css";
 
 const Navbar = ({ children }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
 
   const auth = useSelector((store) => store.auth);
@@ -64,7 +63,7 @@ const Navbar = ({ children }) => {
     { icon: <MdEvent />, title: "Events", address: "/events" },
     { icon: <PiExamFill />, title: "Test", address: "/test" },
     { icon: <BiUserCheck />, title: "Usermarks", address: "/usermarks" },
-    { icon: <TbLogout2 />, title: "Logout", address: "/logout" },
+    { icon: <TbLogout2 />, title: "Logout", address: "/" },
   ];
 
   const tutorData = [
@@ -76,8 +75,10 @@ const Navbar = ({ children }) => {
     { icon: <AiOutlineQuestion />, title: "Queries", address: "/query" },
   ];
 
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    dispatch(authLogout());
+    navigate("/"); // Navigates to homepage
   };
 
   const dropdownItems = [
@@ -132,7 +133,7 @@ const Navbar = ({ children }) => {
 
           {/* Logout at the bottom */}
           <span onClick={handleLogout}>
-            <Menu Icon={<BiLogOut />} Title="Logout" Address="" />
+            <Menu Icon={<BiLogOut />} Title="Logout" Address="/" />
           </span>
         </ul>
       </div>
