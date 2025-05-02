@@ -102,6 +102,10 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.task-details-modal {
+  background: white !important;
+}
+
 .form-input:focus {
   border-color: #3b82f6;
   outline: none;
@@ -215,6 +219,12 @@
   color: #6b7280;
 }
 
+img, svg {
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+}
+
 .task-description {
   margin-top: 0.5rem;
   font-size: 0.875rem;
@@ -249,6 +259,27 @@
 /* Progress Bar Styles */
 .progress-container {
   margin-top: 1rem;
+}
+
+.download {
+  color: white;
+  background-color: orange;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.task-card-footer {
+  margin-top: 10px;
+}
+
+
+button.filter-button {
+  margin-right: 5px;
+}
+
+.task-filters {
+  margin-bottom: 5px;
 }
 
 .progress-labels {
@@ -298,7 +329,7 @@
   font-weight: 500;
   color: #374151;
   background-color: white;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(191, 177, 177, 0.05);
 }
 
 .download-button:hover {

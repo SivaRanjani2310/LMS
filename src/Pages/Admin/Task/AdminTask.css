@@ -125,6 +125,18 @@
   margin-bottom: 1rem;
 }
 
+button.btn-cancel {
+  margin-right: 10px;
+}
+
+form.review-form {
+  padding: 10px;
+}
+
+.modal-container {
+  background-color: #ffff;
+}
+
 .assignment-form {
   display: flex;
   flex-direction: column;
@@ -377,6 +389,20 @@
   transition: background-color 0.2s;
 }
 
+
+.pending
+{
+  background-color: #48bb78;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
 .approve-button {
   background-color: #48bb78;
   color: white;
@@ -457,4 +483,84 @@
   padding: 0.5rem;
   background-color: #f7fafc;
   border-radius: 0.25rem;
+}
+.user-checkbox-item.check-all {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+input[type="checkbox"]:indeterminate {
+  background-color: #ccc;
+}
+.file-url-notice {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.file-upload-input:disabled + label {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.view-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.view-button:hover {
+  background-color: #45a049;
+}
+
+.view-modal-content {
+  padding: 20px;
+}
+
+.view-modal-section {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.view-modal-section h4 {
+  margin-top: 0;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.view-modal-section p {
+  margin: 8px 0;
+}
+
+.modal-container {
+  width: 500px;
+  background-color: #ffff;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
 }
