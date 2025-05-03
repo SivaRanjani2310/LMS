@@ -517,7 +517,7 @@ const MyTask = () => {
                       <div className="task-card-body">
                         <p className="task-description">{task.description.substring(0, 100)}{task.description.length > 100 && '...'}</p>
                         
-                        <div className="task-progress">
+                        {/* <div className="task-progress">
                           <div className="progress-labels">
                             <span>Progress</span>
                             <span>{progress.percentage}%</span>
@@ -525,7 +525,7 @@ const MyTask = () => {
                           <div className="progress-bar">
                             <div className={`progress-fill ${progress.color}`} style={{ width: `${progress.percentage}%` }} />
                           </div>
-                        </div>
+                        </div> */}
                         
                         <div className="task-due-date">
                           <svg className="calendar-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
