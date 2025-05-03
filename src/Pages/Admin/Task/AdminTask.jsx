@@ -175,7 +175,6 @@ const AdminTask = () => {
     setFilePreview(file.name);
   };
 
-  // Handle task assignment
   const handleAssignTask = async (e) => {
     e.preventDefault();
     
@@ -191,6 +190,12 @@ const AdminTask = () => {
       return;
     }
   
+    // Updated validation logic for file options
+    if (newTask.fileUrl && newTask.file) {
+      toast.error("Please provide either a file URL OR upload a file, not both");
+      return;
+    }
+  
     if (!newTask.fileUrl && !newTask.file) {
       toast.error("Please provide either a file URL or upload a file");
       return;
@@ -201,6 +206,7 @@ const AdminTask = () => {
     try {
       let fileUrl = newTask.fileUrl;
       
+      // Only upload if there's a file and no URL
       if (newTask.file && !newTask.fileUrl) {
         const formData = new FormData();
         formData.append('file', newTask.file);
@@ -276,7 +282,7 @@ const AdminTask = () => {
   };
 
   // Open review modal
-  const openReviewModal = (taskId, userId, username, maxMarks) => {
+  const openReviewModal = (taskId, userId, username, maxMarks, submission) => {
     setReviewModal({
       isOpen: true,
       taskId,
@@ -284,13 +290,15 @@ const AdminTask = () => {
       username,
       maxMarks,
       currentData: {
-        status: "approved",
-        markGiven: "",
-        reviewNote: ""
-      }
+        status: submission?.status || "approved",
+        markGiven: submission?.markGiven || "",
+        reviewNote: submission?.reviewNote || "",
+      },
+      submissionData: submission // Add this line to store submission details
     });
   };
 
+  
   // Close review modal
   const closeReviewModal = () => {
     setReviewModal({
@@ -434,6 +442,19 @@ const closeViewModal = () => {
   });
 };
 
+// Add this function to your component
+const clearFileSelection = () => {
+  setNewTask(prev => ({
+    ...prev,
+    file: null,  // Clear only the file
+    // Don't clear fileUrl here
+  }));
+  setFilePreview(null);
+  
+  // Reset the file input value
+  const fileInput = document.querySelector('.file-upload-input');
+  if (fileInput) fileInput.value = '';
+};
   return (
     <AdminNavbar>
       <div className="admin">
@@ -506,23 +527,34 @@ const closeViewModal = () => {
                   />
                 </div>
 
+
                 <div className="form-group">
-                  <label className="form-label">Upload File</label>
-                  <div className="file-upload-wrapper">
-                    <label className="file-upload-label">
-                      {filePreview || "Choose file..."}
-                      <input
-                        type="file"
-                        className="file-upload-input"
-                        onChange={handleFileUpload}
-                        disabled={isLoading.uploading}
-                      />
-                    </label>
-                    {isLoading.uploading && (
-                      <span className="uploading-text">Uploading...</span>
-                    )}
-                  </div>
-                </div>
+  <label className="form-label">Upload File</label>
+  <div className="file-upload-wrapper">
+    <label className="file-upload-label">
+      {filePreview || "Choose file..."}
+      <input
+        type="file"
+        className="file-upload-input"
+        onChange={handleFileUpload}
+        disabled={isLoading.uploading}
+      />
+    </label>
+    {filePreview && (
+      <button 
+        type="button" 
+        className="clear-file-button"
+        onClick={clearFileSelection}
+        disabled={isLoading.uploading}
+      >
+        ×
+      </button>
+    )}
+    {isLoading.uploading && (
+      <span className="uploading-text">Uploading...</span>
+    )}
+  </div>
+</div>
 
                 {/* User selection */}
                 <div className="form-group">
@@ -591,7 +623,7 @@ const closeViewModal = () => {
             <div className="task-management-container">
               <div className="section-header">
                 <h2 className="section-title">Assigned Tasks</h2>
-                <div className="tabs">
+                {/* <div className="tabs">
                   {["all", "pending", "in-progress", "completed"].map(tab => (
                     <button
                       key={tab}
@@ -601,7 +633,7 @@ const closeViewModal = () => {
                       {tab.charAt(0).toUpperCase() + tab.slice(1).replace("-", " ")}
                     </button>
                   ))}
-                </div>
+                </div> */}
               </div>
 
               {isLoading.tasks ? (
@@ -684,7 +716,8 @@ const closeViewModal = () => {
               task._id,
               submission.user,
               submission.username,
-              task.maxMarks
+              task.maxMarks,
+              submission // Pass the submission data
             )}
           >
             Review Submission
@@ -694,6 +727,42 @@ const closeViewModal = () => {
 
       {submission.status === "approved" && (
         <div className="submission-actions">
+          <button
+            className="review-button"
+            onClick={() => openReviewModal(
+              task._id,
+              submission.user,
+              submission.username,
+              task.maxMarks,
+              submission // Pass the submission data
+            )}
+          >
+            Review Submission
+          </button>
+
+          <button
+            className="view-button"
+            onClick={() => openViewModal(task, submission)}
+          >
+            View Details
+          </button>
+        </div>
+      )}
+       {submission.status === "rejected" && (
+        <div className="submission-actions">
+          <button
+            className="review-button"
+            onClick={() => openReviewModal(
+              task._id,
+              submission.user,
+              submission.username,
+              task.maxMarks,
+              submission // Pass the submission data
+            )}
+          >
+            Review Submission
+          </button>
+          
           <button
             className="view-button"
             onClick={() => openViewModal(task, submission)}
@@ -714,80 +783,133 @@ const closeViewModal = () => {
             </div>
           </div>
 
-          {/* Review Modal */}
           {reviewModal.isOpen && (
-            <div className="modal-overlay">
-              <div className="modal-container">
-                <div className="modal-header">
-                  <h3>Review Submission from {reviewModal.username}</h3>
-               
-                </div>
-                {/* <div style={{ fontSize: '12px', color: '#666' }}>
-          Debug: Task ID: {reviewModal.taskId} | User ID: {reviewModal.userId}
-        </div> */}
-                <form onSubmit={handleReviewSubmission} className="review-form">
-                  <div className="form-group">
-                    <label className="form-label">Status</label>
-                    <select
-                      name="status"
-                      value={reviewModal.currentData.status}
-                      onChange={handleReviewInputChange}
-                      className="form-select"
-                    >
-                      <option value="approved">Approve</option>
-                      <option value="rejected">Reject</option>
-                    </select>
-                  </div>
+  <div className="modal-overlay">
+    <div className="modal-container">
+      <div className="modal-header">
+        <h3>Review Submission from {reviewModal.username}</h3>
+        <button 
+          className="modal-close-button"
+          onClick={closeReviewModal}
+        >
+          &times;
+        </button>
+      </div>
 
-                  <div className="form-group">
-                    <label className="form-label">
-                      Marks (Max: {reviewModal.maxMarks})
-                    </label>
-                    <input
-                      type="number"
-                      name="markGiven"
-                      className="form-input"
-                      value={reviewModal.currentData.markGiven}
-                      onChange={handleReviewInputChange}
-                      min="0"
-                      max={reviewModal.maxMarks}
-                      required
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">Feedback</label>
-                    <textarea
-                      name="reviewNote"
-                      className="form-textarea"
-                      value={reviewModal.currentData.reviewNote}
-                      onChange={handleReviewInputChange}
-                      placeholder="Provide your feedback here..."
-                      required
-                    />
-                  </div>
-
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn-cancel"
-                      onClick={closeReviewModal}
-                      disabled={isLoading.reviewing}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="btn-submit"
-                      disabled={isLoading.reviewing}
-                    >
-                      {isLoading.reviewing ? "Submitting..." : "Submit Review"}
-                    </button>
-                  </div>
-                </form>
-              </div>
+      {/* Submission Details Section */}
+      {reviewModal.submissionData && (
+        <div className="submission-preview">
+          <h4>Submission Details</h4>
+          <div className="submission-details-grid">
+            <div>
+              <p><strong>Submitted At:</strong> {new Date(reviewModal.submissionData.submittedAt).toLocaleString()}</p>
+              {reviewModal.submissionData.file && (
+                <p>
+                  <strong>File:</strong>{" "}
+                  <a 
+                    href={reviewModal.submissionData.file} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="submission-link"
+                  >
+                    Download Submission
+                  </a>
+                </p>
+              )}
             </div>
-          )}
+            <div>
+              {reviewModal.submissionData.driveLink && (
+                <p>
+                  <strong>Drive Link:</strong>{" "}
+                  <a 
+                    href={reviewModal.submissionData.driveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="submission-link"
+                  >
+                    View on Google Drive
+                  </a>
+                </p>
+              )}
+              {reviewModal.submissionData.note && (
+                <p><strong>Student Note:</strong> {reviewModal.submissionData.note}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <form onSubmit={handleReviewSubmission} className="review-form">
+        <div className="form-group">
+          <label className="form-label">Status</label>
+          <select
+            name="status"
+            value={reviewModal.currentData.status}
+            onChange={handleReviewInputChange}
+            className="form-select"
+          >
+            <option value="" selected >-Select Status-</option>
+            <option value="approved">Approve</option>
+            <option value="rejected">Reject</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">
+            Marks (Max: {reviewModal.maxMarks})
+          </label>
+          <input
+            type="number"
+            name="markGiven"
+            className="form-input"
+            value={reviewModal.currentData.markGiven}
+            onChange={handleReviewInputChange}
+            min="0"
+            max={reviewModal.maxMarks}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Feedback</label>
+          <textarea
+            name="reviewNote"
+            className="form-textarea"
+            value={reviewModal.currentData.reviewNote}
+            onChange={handleReviewInputChange}
+            placeholder="Provide detailed feedback..."
+            rows="4"
+            required
+          />
+        </div>
+
+        <div className="modal-footer">
+          <button
+            type="button"
+            className="btn-cancel"
+            onClick={closeReviewModal}
+            disabled={isLoading.reviewing}
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="btn-submit"
+            disabled={isLoading.reviewing}
+          >
+            {isLoading.reviewing ? (
+              <>
+                <span className="spinner"></span> Processing...
+              </>
+            ) : (
+              "Submit Review"
+            )}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
 
 {viewModal.isOpen && (
   <div className="modal-overlay">

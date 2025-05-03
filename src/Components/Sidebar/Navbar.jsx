@@ -8,21 +8,21 @@ import { Dropdown } from "antd";
 import user from "../../Assets/useravatar.png";
 import logo from "../../Assets/logo.png";
 
-// Icon imports
-import { BiLogOut, BiUserVoice } from "react-icons/bi";
-import { TbLayoutGridAdd, TbUsers, TbBrandSpeedtest, TbReport } from "react-icons/tb";
-import { LuLayoutGrid } from "react-icons/lu";
-import { PiStudentDuotone } from "react-icons/pi";
-import { HiOutlineHome } from "react-icons/hi";
-import { GoChevronDown } from "react-icons/go";
-import { RiAdminLine } from "react-icons/ri";
-import { AiOutlineQuestion } from "react-icons/ai";
 
-import { FaGraduationCap } from "react-icons/fa";
-import { MdEvent } from "react-icons/md";
-import {  TbLogout2 } from "react-icons/tb";
-import { PiExamFill } from "react-icons/pi";
-import { BiUserCheck } from "react-icons/bi";
+
+import { HiOutlineHome } from "react-icons/hi";
+import { FaGraduationCap, FaTasks, FaBullhorn, FaTrophy } from "react-icons/fa";
+import { MdEvent, MdOutlineForum, MdQueryBuilder } from "react-icons/md";
+import { PiExamFill, PiStudent } from "react-icons/pi";
+import { BiUserCheck, BiUserVoice } from "react-icons/bi";
+import { BiUser,BiLogOut  } from "react-icons/bi";
+
+import { TbReport, TbLogout, TbCalendar, TbProgress } from "react-icons/tb";
+import { AiOutlineQuestion } from "react-icons/ai";
+import { BsSpeedometer2, BsGraphUp } from "react-icons/bs";
+import { LuLayoutGrid } from "react-icons/lu"; // Added Lucide icon import
+import { GoChevronDown } from "react-icons/go";  // Octicons chevron
+
 
 // CSS
 import "./Navbar.css";
@@ -47,32 +47,32 @@ const Navbar = ({ children }) => {
 
   const studentData = [
     { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
-    { icon: <BiUserVoice />, title: "Announcement", address: "/announcement" },
-    { icon: <TbBrandSpeedtest />, title: "MyTask", address: "/myTask" },
-    { icon: <TbLayoutGridAdd />, title: "Calendar", address: "/calendar" },
-    { icon: <LuLayoutGrid />, title: "TaskProgress", address: "/taskProgress" },
-    { icon: <RiAdminLine />, title: "Achievements", address: "/achievements" },
+    { icon: <FaBullhorn />, title: "Announcement", address: "/announcement" },
+    { icon: <FaTasks />, title: "MyTask", address: "/myTask" },
+    { icon: <TbCalendar />, title: "Calendar", address: "/calendar" },
+    { icon: <BsGraphUp />, title: "TaskProgress", address: "/taskProgress" },
+    { icon: <FaTrophy />, title: "Achievements", address: "/achievements" },
     { icon: <TbReport />, title: "Marks", address: "/marks" },
-    { icon: <PiStudentDuotone />, title: "Forum", address: "/forum" },
-    { icon: <AiOutlineQuestion />, title: "Query", address: "/query" },
+    { icon: <MdOutlineForum />, title: "Forum", address: "/forum" },
+    { icon: <MdQueryBuilder />, title: "Query", address: "/query" },
   ];
-
+  
   const adminData = [
     { icon: <HiOutlineHome />, title: "Dashboard", address: "/admin" },
     { icon: <FaGraduationCap />, title: "Degrees", address: "/degrees" },
     { icon: <MdEvent />, title: "Events", address: "/events" },
     { icon: <PiExamFill />, title: "Test", address: "/test" },
     { icon: <BiUserCheck />, title: "Usermarks", address: "/usermarks" },
-    { icon: <TbLogout2 />, title: "Logout", address: "/" },
+    { icon: <TbLogout />, title: "Logout", address: "/" },
   ];
-
+  
   const tutorData = [
     { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
-    { icon: <TbBrandSpeedtest />, title: "My Tasks", address: "/myTask" },
-    { icon: <TbLayoutGridAdd />, title: "Calendar", address: "/calendar" },
+    { icon: <FaTasks />, title: "My Tasks", address: "/myTask" },
+    { icon: <TbCalendar />, title: "Calendar", address: "/calendar" },
     { icon: <TbReport />, title: "Reports", address: "/reports" },
-    { icon: <PiStudentDuotone />, title: "Forum", address: "/forum" },
-    { icon: <AiOutlineQuestion />, title: "Queries", address: "/query" },
+    { icon: <MdOutlineForum />, title: "Forum", address: "/forum" },
+    { icon: <MdQueryBuilder />, title: "Queries", address: "/query" },
   ];
 
   const navigate = useNavigate();

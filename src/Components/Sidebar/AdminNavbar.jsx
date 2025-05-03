@@ -9,22 +9,26 @@ import { Dropdown } from "antd";
 import user from "../../Assets/useravatar.png";
 import logo from "../../Assets/logo.png";
 
-// Icon imports
-import { BiLogOut, BiUserVoice } from "react-icons/bi";
-import { TbLayoutGridAdd, TbUsers, TbBrandSpeedtest, TbReport } from "react-icons/tb";
-import { LuLayoutGrid } from "react-icons/lu";
-import { PiStudentDuotone } from "react-icons/pi";
-import { HiOutlineHome } from "react-icons/hi";
-import { GoChevronDown } from "react-icons/go";
-import { RiAdminLine } from "react-icons/ri";
-import { AiOutlineQuestion } from "react-icons/ai";
-
-import { FaGraduationCap } from "react-icons/fa";
-import { MdEvent } from "react-icons/md";
-import { TbLogout2 } from "react-icons/tb";
+// Correct imports (all icons verified to exist)
+import { 
+  HiOutlineHome, 
+  HiOutlineQuestionMarkCircle, 
+  HiOutlineAcademicCap, 
+  HiOutlineCalendar, 
+  HiOutlineChartBar, 
+  HiOutlineChatAlt2, 
+  HiOutlineLogout,
+  HiOutlineSpeakerphone 
+} from "react-icons/hi";
+import { FaGraduationCap, FaTasks, FaTrophy } from "react-icons/fa";
+import { MdEvent, MdOutlineForum } from "react-icons/md";
 import { PiExamFill } from "react-icons/pi";
-import { BiUserCheck } from "react-icons/bi";
-import { BiUser } from "react-icons/bi";
+import { BiUser, BiUserCheck,BiLogOut  } from "react-icons/bi";
+import { TbReport } from "react-icons/tb";
+import { LuLayoutGrid } from "react-icons/lu"; // Added Lucide icon import
+
+import { GoChevronDown } from "react-icons/go";  // Octicons chevron
+
 
 // CSS
 import "./Navbar.css";
@@ -50,39 +54,36 @@ const AdminNavbar = ({ children }) => {
 
   const studentData = [
     { icon: <HiOutlineHome />, title: "Dashboard", address: "/admin" },
-    { icon: <FaGraduationCap />, title: "MyTask", address: "/admin/adminTask" },
-    { icon: <MdEvent />, title: "Calendar", address: "/admin/adminCalendar" },
+    { icon: <FaTasks />, title: "MyTask", address: "/admin/adminTask" },
+    { icon: <HiOutlineCalendar />, title: "Calendar", address: "/admin/adminCalendar" },
     { icon: <MdEvent />, title: "Events", address: "/eventsList" },
     { icon: <PiExamFill />, title: "Tests", address: "/testsList" },
     { icon: <BiUser />, title: "UserMarks", address: "/usermarks" },
-    { icon: <HiOutlineHome />, title: "TaskProgress", address: "/admin/adminTaskProgress" },
-    { icon: <HiOutlineHome />, title: "Forum", address: "/admin/adminForum" },
-    { icon: <HiOutlineHome />, title: "Query", address: "/admin/adminQuery" },
-    { icon: <HiOutlineHome />, title: "Announcement", address: "/admin/adminAnnouncement" },
-    { icon: <HiOutlineHome />, title: "Achievements", address: "/admin/adminAchievements" },
-
-      ];
-
+    { icon: <HiOutlineChartBar />, title: "TaskProgress", address: "/admin/adminTaskProgress" },
+    { icon: <HiOutlineChatAlt2 />, title: "Forum", address: "/admin/adminForum" },
+    { icon: <HiOutlineQuestionMarkCircle />, title: "Query", address: "/admin/adminQuery" },
+    { icon: <HiOutlineSpeakerphone />, title: "Announcement", address: "/admin/adminAnnouncement" },
+    { icon: <FaTrophy />, title: "Achievements", address: "/admin/adminAchievements" },
+  ];
+  
   const adminData = [
     { icon: <HiOutlineHome />, title: "Dashboard", address: "/admin" },
-    // { icon: <HiOutlineHome />, title: "Announcement", address: "/announcement" },
     { icon: <FaGraduationCap />, title: "Degrees", address: "/degrees" },
-    // { icon: <HiOutlineHome />, title: "Calendar", address: "/calendar" },
-    // { icon: <HiOutlineHome />, title: "TaskProgress", address: "/taskprogress" },
     { icon: <MdEvent />, title: "Events", address: "/events" },
     { icon: <PiExamFill />, title: "Test", address: "/test" },
     { icon: <BiUserCheck />, title: "Usermarks", address: "/usermarks" },
-    { icon: <TbLogout2 />, title: "Logout", address: "/logout" },
+    { icon: <HiOutlineLogout />, title: "Logout", address: "/logout" },
   ];
-
+  
   const tutorData = [
     { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
-    { icon: <TbBrandSpeedtest />, title: "My Tasks", address: "/myTask" },
-    { icon: <TbLayoutGridAdd />, title: "Calendar", address: "/calendar" },
+    { icon: <FaTasks />, title: "My Tasks", address: "/myTask" },
+    { icon: <HiOutlineCalendar />, title: "Calendar", address: "/calendar" },
     { icon: <TbReport />, title: "Reports", address: "/reports" },
-    { icon: <PiStudentDuotone />, title: "Forum", address: "/forum" },
-    { icon: <AiOutlineQuestion />, title: "Queries", address: "/query" },
+    { icon: <HiOutlineChatAlt2 />, title: "Forum", address: "/forum" },
+    { icon: <HiOutlineQuestionMarkCircle />, title: "Queries", address: "/query" },
   ];
+  
 
 
   const handleLogout = () => {
